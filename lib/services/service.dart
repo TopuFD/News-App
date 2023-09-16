@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 import '../model/model.dart';
 
 const all_news_url =
@@ -9,7 +10,7 @@ const breakingNews_url = "https://newsapi.org/v2/top-headlines?country=us&apiKey
 
 class ComentHelper {
   Future getAllNews() async {
-    var respons = await http.get(Uri.parse(all_news_url));
+    Response respons = await http.get(Uri.parse(all_news_url));
     try {
       if (respons.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(respons.body);
